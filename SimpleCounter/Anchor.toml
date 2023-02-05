@@ -1,0 +1,16 @@
+[features]
+seeds = false
+skip-lint = false
+[programs.localnet]
+mysolanaapp = "XUKdKrMSGMKgWyQ3JT3xbZjNqqEYf61RvZ26nMkb72t"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "Localnet"
+wallet = "/home/gordonjun/.config/solana/id.json"
+
+[scripts]
+test = "yarn run mocha -t 1000000 tests/"
+copy-idl = "mkdir -p app/src && cp target/idl/mysolanaapp.json app/src/idl.json"
