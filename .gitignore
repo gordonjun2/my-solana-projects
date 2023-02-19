@@ -1,25 +1,25 @@
 .anchor
 .DS_Store
-target
+target/
 **/*.rs.bk
-node_modules
-test-ledger
+node_modules/
+test-ledger/
 dist/
 .env
 
 # dependencies
-/.pnp
+.pnp
 .pnp.js
 
 # testing
-/coverage
+coverage/
 
 # next.js
-/.next/
-/out/
+.next/
+out
 
 # production
-/build
+build/
 
 # misc
 *.pem
