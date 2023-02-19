@@ -8,6 +8,10 @@
 - [(SimpleCounter) The Complete Guide to Full Stack Solana Development with React, Anchor, Rust, and Phantom](https://dev.to/edge-and-node/the-complete-guide-to-full-stack-solana-development-with-react-anchor-rust-and-phantom-3291)
 - [(buildspace/Solana-Core) Solana Core](https://buildspace.so/p/solana-core)
     - In progress
+- [(buildspace/Solana-dApp-Anime-Wall) Create and Deploy your first Solana dApp](https://buildspace.so/p/build-solana-web3-app)
+    - Future
+- [(buildspace/Solana-NFT) Ship an NFT Collection on Solana](https://buildspace.so/p/ship-solana-nft-collection)
+    - Future
 
 ## General Installation
 
