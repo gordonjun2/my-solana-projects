@@ -6,6 +6,7 @@ node_modules/
 test-ledger/
 dist/
 .env
+package-lock.json
 
 # dependencies
 .pnp
