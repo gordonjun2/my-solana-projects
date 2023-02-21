@@ -1,0 +1,8 @@
+PublicKey: 5T1xKCjMoe7TV61sHRRqUJuDwEmj9Xqc8MWfEPakLVAq
+The token mint account address is EUzU4RZg9Tk6sqKRpfQNjzeg9yhrf26jEQ9YEKDe8u7S
+Token Mint: https://explorer.solana.com/address/EUzU4RZg9Tk6sqKRpfQNjzeg9yhrf26jEQ9YEKDe8u7S?cluster=devnet
+Token Account: https://explorer.solana.com/address/A8bHQHoobYoED2UrWsf4wb1Fm599c8QhnGBtYE6jwJA2?cluster=devnet
+Mint Token Transaction: https://explorer.solana.com/tx/2BbAEf1Ut1diRov1jPx6eTyKUyvqwKFq94r3MrYVgneLD3TrJ2SUzV9NDwia4fuAGjCHZv2FMegWZMFLL9XgeSv9?cluster=devnet
+Token Account: https://explorer.solana.com/address/DKeT9HnHbZatM9KTrsYSYQSc7goXamJxZwzKuDHFZKnn?cluster=devnet
+Transfer Transaction: https://explorer.solana.com/tx/2de7qN5kU9Jd6heSqsFgUqzzfrknvyxQsXTt8qX3D929AEm2xkUrHAgunsCY6spn55Vy7aTTn56bvzLbBV2xgZ2d?cluster=devnet
+Burn Transaction: https://explorer.solana.com/tx/3xD2asTo8spYsJQm7VSAcVcRAGqKbcpbkWBugfufWH2UZFwTmqhznXypBoCRkieRWoX35EE2yavVs3pdvdCGFTke?cluster=devnet
