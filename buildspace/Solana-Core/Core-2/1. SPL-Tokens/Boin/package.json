@@ -4,7 +4,9 @@
   "description": "Starter template for a Solana client script",
   "main": "index.ts",
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "metaplex": "ts-node src/indexMetaplex.ts",
+    "shipChallenge": "ts-node src/indexShipChallenge.ts"
   },
   "keywords": [],
   "author": "test",
@@ -14,8 +16,11 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
+    "@metaplex-foundation/js": "^0.18.1",
+    "@metaplex-foundation/mpl-token-metadata": "^2.8.4",
     "@solana/spl-token": "0.2.0",
     "@solana/web3.js": "^1.73.0",
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "fs": "^0.0.1-security"
   }
 }
