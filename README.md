@@ -23,6 +23,7 @@
     - Install Mocha
     - Install Yarn
     - Install Anchor
+- Install Sugar: Candy Machine CLI [here](https://docs.metaplex.com/developer-tools/sugar/overview/installation)
 - For each project folder, install using 
     ```
     npm i
