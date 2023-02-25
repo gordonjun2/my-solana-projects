@@ -34,3 +34,4 @@
 - [How to polyfill node core modules in webpack 5](https://alchemy.com/blog/how-to-polyfill-node-core-modules-in-webpack-5)
 - [export ‘Provider’ (imported as ‘Provider’) was not found in ‘@project-serum/anchor’](https://medium.com/illumination/export-provider-imported-as-provider-was-not-found-in-project-serum-anchor-b6f3dcc34601)
 - [How do I make Git forget about a file that was tracked, but is now in .gitignore?](https://stackoverflow.com/questions/1274057/how-do-i-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore)
+- [Fix React 'Hydration failed because the initial UI does not match what was rendered on the server' error](https://github.com/metaplex-foundation/js-examples/pull/34/files)
