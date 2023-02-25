@@ -21,13 +21,14 @@ import {
   Metaplex,
   walletAdapterIdentity,
   CandyMachine,
+  CandyMachineV2
 } from "@metaplex-foundation/js"
 import { useRouter } from "next/router"
 
 const Connected: FC = () => {
   const { connection } = useConnection()
   const walletAdapter = useWallet()
-  const [candyMachine, setCandyMachine] = useState<CandyMachine>()
+  const [candyMachine, setCandyMachine] = useState<CandyMachineV2>()
   const [isMinting, setIsMinting] = useState(false)
 
   const metaplex = useMemo(() => {
