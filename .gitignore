@@ -7,6 +7,7 @@ test-ledger/
 dist/
 .env
 package-lock.json
+yarn.lock
 
 # dependencies
 .pnp
