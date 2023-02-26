@@ -5,7 +5,11 @@ import { Box, Button, FormControl, FormLabel, Input, NumberDecrementStepper, Num
 import * as web3 from '@solana/web3.js'
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 
-const MOVIE_REVIEW_PROGRAM_ID = 'CenYq6bDRB7p73EjsPEpiYN7uveyPUTdXkDkgUduboaN'
+// from Core-1/3. Custom-Instructions/
+// const MOVIE_REVIEW_PROGRAM_ID = 'CenYq6bDRB7p73EjsPEpiYN7uveyPUTdXkDkgUduboaN'
+
+// from Core-3/3. Security-and-Validation/
+const MOVIE_REVIEW_PROGRAM_ID = '8aEuJfZ127u1CRZ4iERV4b51gm9sYRMnyLoFp6LcXt3c'
 
 export const Form: FC = () => {
     const [title, setTitle] = useState('')
