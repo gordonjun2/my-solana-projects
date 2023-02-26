@@ -3,7 +3,11 @@ import { FC, useEffect, useState } from 'react'
 import { StudentIntro } from '../models/StudentIntro'
 import * as web3 from '@solana/web3.js'
 
-const STUDENT_INTRO_PROGRAM_ID = 'HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf'
+// from Core-1/3. Custom-Instructions/
+// const STUDENT_INTRO_PROGRAM_ID = 'HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf'
+
+// from Core-3/3. Security-and-Validation/
+const STUDENT_INTRO_PROGRAM_ID = 'EZhByigTK7sDo72tGVzaWiwbPi3osuvDS9Kwe1A6ujC9'
 
 export const StudentIntroList: FC = () => {
     const connection = new web3.Connection(web3.clusterApiUrl('devnet'))

@@ -5,7 +5,11 @@ import { Box, Button, FormControl, FormLabel, Input, Textarea } from '@chakra-ui
 import * as web3 from '@solana/web3.js'
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 
-const STUDENT_INTRO_PROGRAM_ID = 'HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf'
+// from Core-1/3. Custom-Instructions/
+// const STUDENT_INTRO_PROGRAM_ID = 'HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf'
+
+// from Core-3/3. Security-and-Validation/
+const STUDENT_INTRO_PROGRAM_ID = 'EZhByigTK7sDo72tGVzaWiwbPi3osuvDS9Kwe1A6ujC9'
 
 export const Form: FC = () => {
     const [name, setName] = useState('')
@@ -29,8 +33,15 @@ export const Form: FC = () => {
         const buffer = studentIntro.serialize()
         const transaction = new web3.Transaction()
     
+        // from Core-1/3. Custom-Instructions/
+        // const [pda] = await web3.PublicKey.findProgramAddress(
+        //     [publicKey.toBuffer()],
+        //     new web3.PublicKey(STUDENT_INTRO_PROGRAM_ID)
+        // )
+
+        // from Core-3/3. Security-and-Validation/
         const [pda] = await web3.PublicKey.findProgramAddress(
-            [publicKey.toBuffer()],
+            [publicKey.toBuffer(), new TextEncoder().encode(studentIntro.name)],
             new web3.PublicKey(STUDENT_INTRO_PROGRAM_ID)
         )
         
