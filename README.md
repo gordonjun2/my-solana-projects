@@ -35,6 +35,7 @@
 - Solana Wallet Adapter (*@solana/wallet-adapter...*): https://solana-labs.github.io/wallet-adapter/
 - Solana SPL Token (*@solana/spl-token*): https://solana-labs.github.io/solana-program-library/token/js/
 - Metaplex Foundation (*@metaplex-foundation/js*): https://metaplex-foundation.github.io/js/modules/js.html
+- Solana Program Crate (*solana_program::{...}*): https://docs.rs/solana-program/latest/solana_program/
 
 ## Useful Commands to Set Up Projects
 
