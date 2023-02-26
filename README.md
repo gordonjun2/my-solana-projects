@@ -7,7 +7,7 @@
     - On hold as of now
 - [(SimpleCounter) The Complete Guide to Full Stack Solana Development with React, Anchor, Rust, and Phantom](https://dev.to/edge-and-node/the-complete-guide-to-full-stack-solana-development-with-react-anchor-rust-and-phantom-3291)
 - [(buildspace/Solana-Core) Solana Core](https://buildspace.so/p/solana-core)
-    - In progress
+    - In progress (Core-3)
 - [(buildspace/Solana-dApp-Anime-Wall) Create and Deploy your first Solana dApp](https://buildspace.so/p/build-solana-web3-app)
     - Future
 - [(buildspace/Solana-NFT) Ship an NFT Collection on Solana](https://buildspace.so/p/ship-solana-nft-collection)
@@ -28,6 +28,22 @@
     ```
     npm i
     ```
+
+## Useful APIs References
+
+- Solana Web3 (*@solana/web3.js*): https://solana-labs.github.io/solana-web3.js/
+- Solana Wallet Adapter (*@solana/wallet-adapter...*): https://solana-labs.github.io/wallet-adapter/
+- Solana SPL Token (*@solana/spl-token*): https://solana-labs.github.io/solana-program-library/token/js/
+- Metaplex Foundation (*@metaplex-foundation/js*): https://metaplex-foundation.github.io/js/modules/js.html
+
+## Useful Commands to Set Up Projects
+
+- VueJS App: ```vue create app --force```
+- Next.js App: ```npx create-next-app --typescript```
+- Solana Client: ```npx create-solana-client <project folder name> --initialize-keypair```
+- [Solana dApp Scaffold (Next.js)](https://github.com/solana-labs/dapp-scaffold)
+- [Solana dApp Scaffold (VueJS)](https://github.com/solana-developers/dapp-scaffold-vue)
+- [Solana Pay Scaffold](https://github.com/solana-labs/solana-pay-scaffold)
 
 ## Tips
 
