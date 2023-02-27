@@ -1,0 +1,13 @@
+[package]
+name = "local-program"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+no-entrypoint = []
+
+[dependencies]
+solana-program = "~1.14.14"
+
+[lib]
+crate-type = ["cdylib", "lib"]

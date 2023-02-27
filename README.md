@@ -46,6 +46,7 @@
 - [Solana dApp Scaffold (Next.js)](https://github.com/solana-labs/dapp-scaffold)
 - [Solana dApp Scaffold (VueJS)](https://github.com/solana-developers/dapp-scaffold-vue)
 - [Solana Pay Scaffold](https://github.com/solana-labs/solana-pay-scaffold)
+- Rust Project: ```cargo new --lib <project folder name>```
 
 ## Tips
 
@@ -54,3 +55,4 @@
 - [How do I make Git forget about a file that was tracked, but is now in .gitignore?](https://stackoverflow.com/questions/1274057/how-do-i-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore)
 - [Fix React 'Hydration failed because the initial UI does not match what was rendered on the server' error](https://github.com/metaplex-foundation/js-examples/pull/34/files)
 - [How to create symbolic links in Linux](https://www.hostinger.com/tutorials/how-to-create-symbolic-links-in-linux/)
+- [Frequent BSOD while working on WSL for Rust development](https://github.com/microsoft/vscode-remote-release/issues/988)
