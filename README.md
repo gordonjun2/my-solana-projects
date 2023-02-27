@@ -29,13 +29,14 @@
     npm i
     ```
 
-## Useful APIs References
+## Useful APIs / CLI References
 
 - Solana Web3 (*@solana/web3.js*): https://solana-labs.github.io/solana-web3.js/
 - Solana Wallet Adapter (*@solana/wallet-adapter...*): https://solana-labs.github.io/wallet-adapter/
 - Solana SPL Token (*@solana/spl-token*): https://solana-labs.github.io/solana-program-library/token/js/
 - Metaplex Foundation (*@metaplex-foundation/js*): https://metaplex-foundation.github.io/js/modules/js.html
 - Solana Program Crate (*solana_program::{...}*): https://docs.rs/solana-program/latest/solana_program/
+- Solana CLI Documentation: https://docs.solana.com/cli
 
 ## Useful Commands to Set Up Projects
 
