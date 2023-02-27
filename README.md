@@ -56,3 +56,13 @@
 - [Fix React 'Hydration failed because the initial UI does not match what was rendered on the server' error](https://github.com/metaplex-foundation/js-examples/pull/34/files)
 - [How to create symbolic links in Linux](https://www.hostinger.com/tutorials/how-to-create-symbolic-links-in-linux/)
 - [Frequent BSOD while working on WSL for Rust development](https://github.com/microsoft/vscode-remote-release/issues/988)
+- If the error below occurs when building Rust program using ```cargo build-bpf```, open up the *Cargo.toml* file, and ensure that the *solana-program* version under *[dependencies]* matches the installed Solana version (use ```solana --version``` to check).
+    ```
+    [ERROR cargo_build_sbf] Failed to obtain package metadata: `cargo metadata` exited with an error: 
+    Updating crates.io index 
+    Downloading crates ... 
+    Downloaded solana-program v1.14.16 error: failed to parse manifest at `/home/gordonjun/.cargo/registry/src/github.com-1ecc6299db9ec823/solana-program-1.14.16/Cargo.toml` 
+    Caused by: virtual manifests must be configured with [workspace]
+    ```
+
+

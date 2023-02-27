@@ -7,7 +7,7 @@ edition = "2021"
 no-entrypoint = []
 
 [dependencies]
-solana-program = "~1.14.14"
+solana-program = "1.14.14"
 
 [lib]
 crate-type = ["cdylib", "lib"]
