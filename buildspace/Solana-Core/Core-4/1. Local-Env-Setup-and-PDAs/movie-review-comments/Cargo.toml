@@ -1,0 +1,17 @@
+[package]
+name = "movie-review-comments"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+no-entrypoint = []
+
+[dependencies]
+solana-program = "1.14.14"
+borsh = "0.9.3"
+thiserror = "1.0.31"
+
+[lib]
+crate-type = ["cdylib", "lib"]
