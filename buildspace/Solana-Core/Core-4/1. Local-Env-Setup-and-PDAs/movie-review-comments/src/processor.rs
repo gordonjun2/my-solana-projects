@@ -81,18 +81,16 @@ pub fn add_movie_review(
         return Err(ReviewError::InvalidDataLength.into());
     }
 
-    let account_len: usize = 1000;
-
     let rent = Rent::get()?;
     let rent_lamports = rent.minimum_balance(account_len);
 
     invoke_signed(
         &system_instruction::create_account(
-        initializer.key,
-        pda_account.key,
-        rent_lamports,
-        account_len.try_into().unwrap(),
-        program_id,
+            initializer.key,
+            pda_account.key,
+            rent_lamports,
+            account_len.try_into().unwrap(),
+            program_id,
         ),
         &[initializer.clone(), pda_account.clone(), system_program.clone()],
         &[&[initializer.key.as_ref(), title.as_bytes().as_ref(), &[bump_seed]]],

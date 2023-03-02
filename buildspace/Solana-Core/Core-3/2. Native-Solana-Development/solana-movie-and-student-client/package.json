@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "shipChallenge": "ts-node src/shipChallenge.ts",
+    "core3ShipChallenge": "ts-node src/core3ShipChallenge.ts",
+    "core4ShipChallenge": "ts-node src/core4ShipChallenge.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
