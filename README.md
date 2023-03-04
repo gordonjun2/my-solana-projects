@@ -39,8 +39,13 @@ npm install chai
 - Solana Wallet Adapter (*@solana/wallet-adapter...*): https://solana-labs.github.io/wallet-adapter/
 - Solana SPL Token (*@solana/spl-token*): https://solana-labs.github.io/solana-program-library/token/js/
 - Metaplex Foundation (*@metaplex-foundation/js*): https://metaplex-foundation.github.io/js/modules/js.html
-- Solana Program Crate (*solana_program::{...}*): https://docs.rs/solana-program/latest/solana_program/
 - Solana CLI Documentation: https://docs.solana.com/cli
+- Rust Community's Crate Registry: https://crates.io/
+- Solana Program Crate (*solana_program::{...}*): https://docs.rs/solana-program/latest/solana_program/
+- SPL Associated Token Account Crate (*spl-associated-token-account::{...}*): https://docs.rs/spl-associated-token-account/latest/spl_associated_token_account/
+- SPL Token Crate (*spl_token::{...}*): https://docs.rs/spl-token/latest/spl_token/
+- Solana SDK Crate (*solana_sdk::{...}*): https://docs.rs/solana-sdk/latest/solana_sdk/
+- Solana Program Test Crate (*solana_program_test::{...}*): https://docs.rs/solana-program-test/latest/solana_program_test/
 
 ## Useful Commands to Set Up Projects
 
