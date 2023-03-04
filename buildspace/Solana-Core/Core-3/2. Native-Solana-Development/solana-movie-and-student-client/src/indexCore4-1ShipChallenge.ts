@@ -46,7 +46,7 @@ const studentIntroReplyCounterSchema = borsh.struct([
 
 async function sendTestStudentIntro(signer: web3.Keypair, programId: web3.PublicKey, connection: web3.Connection) {
     let buffer = Buffer.alloc(1000)
-    const studentName = 'Bibi.clone(1)'
+    const studentName = 'Blanket Bear'
     studentIntroLayout.encode(
         {
             variant: 0,
@@ -108,7 +108,7 @@ async function sendTestStudentIntro(signer: web3.Keypair, programId: web3.Public
         {
             variant: 1,
             name: studentName,
-            message: 'I am learning Solana development and I blove Pipi!' 
+            message: 'I am learning Solana development and I blove Pickle Penguin!' 
         },
         buffer
     )

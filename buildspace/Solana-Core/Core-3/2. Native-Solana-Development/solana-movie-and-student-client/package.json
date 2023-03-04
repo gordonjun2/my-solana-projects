@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "core3ShipChallenge": "ts-node src/core3ShipChallenge.ts",
-    "core4ShipChallenge": "ts-node src/core4ShipChallenge.ts",
+    "core3ShipChallenge": "ts-node src/indexCore3ShipChallenge.ts",
+    "core4-1ShipChallenge": "ts-node src/indexCore4-1ShipChallenge.ts",
+    "core4-2ShipChallenge": "ts-node src/indexCore4-2ShipChallenge.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,6 +20,7 @@
   "dependencies": {
     "@project-serum/borsh": "^0.2.5",
     "@solana/web3.js": "^1.42.0",
+    "@solana/spl-token": "^0.2.0",
     "dotenv": "^16.0.1"
   }
 }
