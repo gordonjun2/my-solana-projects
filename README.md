@@ -24,6 +24,10 @@
     - Install Yarn
     - Install Anchor
 - Install Sugar: Candy Machine CLI [here](https://docs.metaplex.com/developer-tools/sugar/overview/installation)
+- Install Chai using
+```
+npm install chai
+```
 - For each project folder, install using 
     ```
     npm i
@@ -64,5 +68,6 @@
     Downloaded solana-program v1.14.16 error: failed to parse manifest at `/home/gordonjun/.cargo/registry/src/github.com-1ecc6299db9ec823/solana-program-1.14.16/Cargo.toml` 
     Caused by: virtual manifests must be configured with [workspace]
     ```
+- [SPL Token Program Error Codes Reference](https://github.com/solana-labs/solana-program-library/blob/master/token/program/src/error.rs)
 
 

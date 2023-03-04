@@ -116,17 +116,6 @@ async function sendTestStudentIntro(signer: web3.Keypair, programId: web3.Public
 
     console.log("User ATA PDA is:", user_ata_pda.toBase58())
 
-    // if (!ataAccount) {
-    //     const ataInstruction = createAssociatedTokenAccountInstruction(
-    //         signer.publicKey,
-    //         userAta,
-    //         signer.publicKey,
-    //         token_mint_pda
-    //     )
-
-    //     transaction.add(ataInstruction)
-    // }
-
     let transaction = new web3.Transaction()
     
     const add_intro_instruction = new web3.TransactionInstruction({
