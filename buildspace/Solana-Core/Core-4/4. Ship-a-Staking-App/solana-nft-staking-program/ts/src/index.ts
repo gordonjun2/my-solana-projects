@@ -177,7 +177,7 @@ async function main() {
   await testStaking(connection, user, nft)
 
   const stakeMint = new web3.PublicKey(
-    "FtDssB3xsxNZREE2Bn6ARQB8Zjq2JBaX1ioZ43JUYBp"
+    "CNJ5URpHWSXzXXkHtmpqiHTpwokKzE89XPLXQQCiztmq"
   )
 
   const userStakeATA = await getOrCreateAssociatedTokenAccount(
