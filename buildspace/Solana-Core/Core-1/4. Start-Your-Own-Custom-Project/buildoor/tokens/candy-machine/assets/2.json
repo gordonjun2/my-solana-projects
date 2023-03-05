@@ -1,12 +1,16 @@
 {
-  "name": "Number #0003",
-  "symbol": "NB",
-  "description": "Collection of 10 numbers on the blockchain. This is the number 3/10.",
+  "name": "Happy Hannah",
+  "symbol": "BLDR",
+  "description": "Just a bunch of buildoors buildooring.",
   "image": "2.png",
   "attributes": [
     {
-      "trait_type": "Number",
-      "value": "3"
+      "trait_type": "Happy",
+      "value": "yes"
+    },
+    {
+      "trait_type": "Buildoor",
+      "value": "absolutely"
     }
   ],
   "properties": {

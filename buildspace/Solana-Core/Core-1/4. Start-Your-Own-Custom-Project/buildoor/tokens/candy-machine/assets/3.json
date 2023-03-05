@@ -1,12 +1,16 @@
 {
-  "name": "Number #0004",
-  "symbol": "NB",
-  "description": "Collection of 10 numbers on the blockchain. This is the number 4/10.",
+  "name": "Bowow",
+  "symbol": "BLDR",
+  "description": "Just a bunch of buildoors buildooring.",
   "image": "3.png",
   "attributes": [
     {
-      "trait_type": "Number",
-      "value": "4"
+      "trait_type": "Bow",
+      "value": "yes"
+    },
+    {
+      "trait_type": "Buildoor",
+      "value": "absolutely"
     }
   ],
   "properties": {
