@@ -58,7 +58,6 @@ async function createBldToken(
       description: tokenDescription,
       image: imageUri,
     })
-    .run()
 
   const metadataPda = await findMetadataPda(tokenMint)
 

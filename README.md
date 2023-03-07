@@ -46,6 +46,8 @@ npm install chai
 - SPL Token Crate (*spl_token::{...}*): https://docs.rs/spl-token/latest/spl_token/
 - Solana SDK Crate (*solana_sdk::{...}*): https://docs.rs/solana-sdk/latest/solana_sdk/
 - Solana Program Test Crate (*solana_program_test::{...}*): https://docs.rs/solana-program-test/latest/solana_program_test/
+- Anchor CLI Documentation: https://www.anchor-lang.com/docs/cli
+- Anchor Crate (*anchor_lang::{...}*): https://docs.rs/anchor-lang/latest/anchor_lang/
 
 ## Useful Commands to Set Up Projects
 

@@ -32,8 +32,7 @@ const Stake: NextPage<StakeProps> = ({ mint, imageSrc }) => {
     try {
       metaplex
         .nfts()
-        .findByMint({ mintAddress: mint })
-        .run()
+        .findByMint({ mintAddress: new PublicKey(mint) })
         .then((nft) => {
           console.log("nft data on stake page:", nft)
           setNftData(nft)

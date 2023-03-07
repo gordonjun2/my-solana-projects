@@ -20,14 +20,14 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react"
 import {
   Metaplex,
   walletAdapterIdentity,
-  CandyMachine,
+  CandyMachineV2,
 } from "@metaplex-foundation/js"
 import { useRouter } from "next/router"
 
 const Connected: FC = () => {
   const { connection } = useConnection()
   const walletAdapter = useWallet()
-  const [candyMachine, setCandyMachine] = useState<CandyMachine>()
+  const [candyMachine, setCandyMachine] = useState<CandyMachineV2>()
   const [isMinting, setIsMinting] = useState(false)
 
   const metaplex = useMemo(() => {
@@ -38,13 +38,12 @@ const Connected: FC = () => {
     if (!metaplex) return
 
     metaplex
-      .candyMachines()
+      .candyMachinesV2()
       .findByAddress({
         address: new PublicKey(
           process.env.NEXT_PUBLIC_CANDY_MACHINE_ADDRESS ?? ""
         ),
       })
-      .run()
       .then((candyMachine) => {
         console.log(candyMachine)
         setCandyMachine(candyMachine)
@@ -66,7 +65,7 @@ const Connected: FC = () => {
 
       try {
         setIsMinting(true)
-        const nft = await metaplex.candyMachines().mint({ candyMachine }).run()
+        const nft = await metaplex.candyMachinesV2().mint({ candyMachine })
 
         console.log(nft)
         router.push(`/newMint?mint=${nft.nft.address.toBase58()}`)

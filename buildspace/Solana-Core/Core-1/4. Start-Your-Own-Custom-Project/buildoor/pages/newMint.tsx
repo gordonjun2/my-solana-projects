@@ -34,7 +34,6 @@ const NewMint: NextPage<NewMintProps> = ({ mint }) => {
     metaplex
       .nfts()
       .findByMint({ mintAddress: mint })
-      .run()
       .then((nft) => {
         fetch(nft.uri)
           .then((res) => res.json())
