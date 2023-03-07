@@ -48,6 +48,7 @@ npm install chai
 - Solana Program Test Crate (*solana_program_test::{...}*): https://docs.rs/solana-program-test/latest/solana_program_test/
 - Anchor CLI Documentation: https://www.anchor-lang.com/docs/cli
 - Anchor Crate (*anchor_lang::{...}*): https://docs.rs/anchor-lang/latest/anchor_lang/
+- Project-Serum Anchor (*@project-serum/anchor*): https://coral-xyz.github.io/anchor/ts/index.html
 
 ## Useful Commands to Set Up Projects
 
@@ -58,6 +59,7 @@ npm install chai
 - [Solana dApp Scaffold (VueJS)](https://github.com/solana-developers/dapp-scaffold-vue)
 - [Solana Pay Scaffold](https://github.com/solana-labs/solana-pay-scaffold)
 - Rust Project: ```cargo new --lib <project folder name>```
+- Anchor Project: ```anchor init <project folder name>```
 
 ## Tips
 
@@ -76,5 +78,10 @@ npm install chai
     Caused by: virtual manifests must be configured with [workspace]
     ```
 - [SPL Token Program Error Codes Reference](https://github.com/solana-labs/solana-program-library/blob/master/token/program/src/error.rs)
+- [Error: failed to send transaction: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0](https://solana.stackexchange.com/questions/3355/error-failed-to-send-transaction-transaction-simulation-failed-error-processi)
+- If the error below occurs, ensure that each seed's length is not more than 32 (refer the code [here](https://gist.github.com/jeduan/3fc20fb788a95b8de563c914c4187a6d)).
+    ```
+    TypeError: Max seed length exceeded
+    ```
 
 
