@@ -78,6 +78,8 @@ npm install chai
     Caused by: virtual manifests must be configured with [workspace]
     ```
 - [SPL Token Program Error Codes Reference](https://github.com/solana-labs/solana-program-library/blob/master/token/program/src/error.rs)
+- [Metaplex Program Error Codes Reference](https://github.com/metaplex-foundation/metaplex-program-library/blob/45a97b2edbfd6aff34df4ee3e56194008f71bba7/token-metadata/program/src/error.rs#L15)
+- [Anchor Framework Error Codes Reference](https://github.com/coral-xyz/anchor/blob/master/lang/src/error.rs#L158)
 - [Error: failed to send transaction: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0](https://solana.stackexchange.com/questions/3355/error-failed-to-send-transaction-transaction-simulation-failed-error-processi)
 - If the error below occurs, ensure that each seed's length is not more than 32 (refer the code [here](https://gist.github.com/jeduan/3fc20fb788a95b8de563c914c4187a6d)).
     ```

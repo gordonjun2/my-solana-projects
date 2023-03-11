@@ -15,7 +15,7 @@ import {
   Switch,
 } from "@chakra-ui/react"
 import * as anchor from "@project-serum/anchor"
-import { getAssociatedTokenAddress } from "@solana/spl-token"
+import { getAssociatedTokenAddress, createAssociatedTokenAccountInstruction } from "@solana/spl-token"
 import { useConnection, useWallet } from "@solana/wallet-adapter-react"
 import { useWorkspace } from "../context/Anchor"
 
@@ -44,14 +44,46 @@ export const Form: FC = () => {
       program.programId
     )
 
-    const tokenAddress = await getAssociatedTokenAddress(mintPDA, publicKey)
+    const [movieReviewPda] = await anchor.web3.PublicKey.findProgramAddress(
+      [Buffer.from(title), publicKey.toBuffer()],
+      program.programId
+    )
 
-    const transaction = new anchor.web3.Transaction()
+    const [movieReviewCounterPda] =
+      await anchor.web3.PublicKey.findProgramAddress(
+        [Buffer.from("counter"), movieReviewPda.toBuffer()],
+        program.programId
+      )
+
+    let tokenAddress = await getAssociatedTokenAddress(mintPDA, publicKey)
+
+    const ataAccount = await connection.getAccountInfo(tokenAddress)
+
+    let transaction = new anchor.web3.Transaction()
+
+    if (!ataAccount) {
+
+        const ataInstruction = await createAssociatedTokenAccountInstruction(
+            publicKey,
+            tokenAddress,
+            publicKey,
+            mintPDA
+        )
+
+        transaction.add(ataInstruction)
+        await sendTransaction(transaction, connection)
+
+    }
+
+    transaction = new anchor.web3.Transaction()
 
     if (toggle) {
       const instruction = await program.methods
         .addMovieReview(title, description, rating)
         .accounts({
+          movieReview: movieReviewPda,
+          movieCommentCounter: movieReviewCounterPda,
+          rewardMint: mintPDA,
           tokenAccount: tokenAddress,
         })
         .instruction()
@@ -60,6 +92,7 @@ export const Form: FC = () => {
     } else {
       const instruction = await program.methods
         .updateMovieReview(title, description, rating)
+        .accounts({ movieReview: movieReviewPda })
         .instruction()
 
       transaction.add(instruction)

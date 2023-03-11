@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "initializeRewardMint": "ts-node ts/initializeRewardMint.ts"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.8",
@@ -23,7 +24,10 @@
     "framer-motion": "^6.3.1",
     "next": "^12.2.3",
     "react": "^18.2.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "dotenv": "^16.0.1",
+    "fs": "^0.0.1-security",
+    "@metaplex-foundation/js": "^0.18.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.23",
