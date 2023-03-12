@@ -15,7 +15,7 @@ import {
   Switch,
 } from "@chakra-ui/react"
 import * as anchor from "@project-serum/anchor"
-import { getAssociatedTokenAddress, createAssociatedTokenAccountInstruction } from "@solana/spl-token"
+import { getAssociatedTokenAddress, createAssociatedTokenAccountInstruction, TOKEN_PROGRAM_ID, ASSOCIATED_TOKEN_PROGRAM_ID } from "@solana/spl-token"
 import { useConnection, useWallet } from "@solana/wallet-adapter-react"
 import { useWorkspace } from "../context/Anchor"
 
@@ -67,6 +67,11 @@ export const Form: FC = () => {
           movieCommentCounter: movieReviewCounterPda,
           rewardMint: mintPDA,
           tokenAccount: tokenAddress,
+          initializer: publicKey,
+          tokenProgram: TOKEN_PROGRAM_ID,
+          associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+          rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+          systemProgram: anchor.web3.SystemProgram.programId
         })
         .instruction()
 

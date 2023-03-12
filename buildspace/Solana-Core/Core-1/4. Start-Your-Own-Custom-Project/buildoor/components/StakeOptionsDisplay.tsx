@@ -1,68 +1,53 @@
 import { VStack, Text, Button } from "@chakra-ui/react"
 import { useConnection, useWallet } from "@solana/wallet-adapter-react"
 import { PublicKey, Transaction } from "@solana/web3.js"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import {
-  createInitializeStakeAccountInstruction,
-  createRedeemInstruction,
-  createStakingInstruction,
-  createUnstakeInstruction,
-} from "../utils/instructions"
-import {
-  TOKEN_PROGRAM_ID,
   getAssociatedTokenAddress,
-  createAssociatedTokenAccountInstruction,
+  getAccount,
+  Account,
 } from "@solana/spl-token"
 import { PROGRAM_ID as METADATA_PROGRAM_ID } from "@metaplex-foundation/mpl-token-metadata"
-import { PROGRAM_ID, STAKE_MINT } from "../utils/constants"
-import { getStakeAccount } from "../utils/accounts"
+import { STAKE_MINT } from "../utils/constants"
+import { StakeAccount } from "../utils/accounts"
+import { useWorkspace } from "./WorkspaceProvider"
 
 export const StakeOptionsDisplay = ({
   nftData,
-  isStaked,
-  daysStaked,
-  totalEarned,
-  claimable,
+  stakeAccount,
+  fetchState,
 }: {
   nftData: any
-  isStaked: boolean
-  daysStaked: number
-  totalEarned: number
-  claimable: number
+  stakeAccount?: StakeAccount
+  fetchState: any
 }) => {
   const walletAdapter = useWallet()
   const { connection } = useConnection()
 
-  const [isStaking, setIsStaking] = useState(isStaked)
+  const [isConfirmingTransaction, setIsConfirmingTransaction] = useState(false)
   const [nftTokenAccount, setNftTokenAccount] = useState<PublicKey>()
-
-  const checkStakingStatus = useCallback(async () => {
-    if (!walletAdapter.publicKey || !nftTokenAccount) {
-      return
-    }
-
-    try {
-      const account = await getStakeAccount(
-        connection,
-        walletAdapter.publicKey,
-        nftTokenAccount
-      )
-
-      console.log("stake account:", account)
-
-      setIsStaking(account.state === 0)
-    } catch (e) {
-      console.log("error:", e)
-    }
-  }, [walletAdapter, connection, nftTokenAccount])
+  const [bldTokenAccount, setBldTokenAccount] = useState<Account>()
+  const workspace = useWorkspace()
 
   useEffect(() => {
-    checkStakingStatus()
-
     if (nftData) {
       connection
         .getTokenLargestAccounts(nftData.mint.address)
         .then((accounts) => setNftTokenAccount(accounts.value[0].address))
+    }
+
+    if (walletAdapter.publicKey) {
+      const userStakeATA = getAssociatedTokenAddress(
+        STAKE_MINT,
+        walletAdapter.publicKey
+      )
+        .then((ata) => {
+          return getAccount(connection, ata)
+        })
+        .then((account) => setBldTokenAccount(account))
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }, [nftData, walletAdapter, connection])
 
@@ -70,47 +55,34 @@ export const StakeOptionsDisplay = ({
     if (
       !walletAdapter.connected ||
       !walletAdapter.publicKey ||
-      !nftTokenAccount
+      !nftTokenAccount ||
+      !workspace.program
     ) {
       alert("Please connect your wallet")
       return
     }
 
-    const [stakeAccount] = PublicKey.findProgramAddressSync(
-      [walletAdapter.publicKey.toBuffer(), nftTokenAccount.toBuffer()],
-      PROGRAM_ID
-    )
-
     const transaction = new Transaction()
 
-    const account = await connection.getAccountInfo(stakeAccount)
-    if (!account) {
-      transaction.add(
-        createInitializeStakeAccountInstruction(
-          walletAdapter.publicKey,
-          nftTokenAccount,
-          PROGRAM_ID
-        )
-      )
-    }
-
-    const stakeInstruction = createStakingInstruction(
-      walletAdapter.publicKey,
-      nftTokenAccount,
-      nftData.mint.address,
-      nftData.edition.address,
-      TOKEN_PROGRAM_ID,
-      METADATA_PROGRAM_ID,
-      PROGRAM_ID
+    transaction.add(
+      await workspace.program.methods
+        .stake()
+        .accounts({
+          nftTokenAccount: nftTokenAccount,
+          nftMint: nftData.mint.address,
+          nftEdition: nftData.edition.address,
+          metadataProgram: METADATA_PROGRAM_ID,
+        })
+        .instruction()
     )
-
-    transaction.add(stakeInstruction)
 
     await sendAndConfirmTransaction(transaction)
   }, [walletAdapter, connection, nftData, nftTokenAccount])
 
   const sendAndConfirmTransaction = useCallback(
     async (transaction: Transaction) => {
+      setIsConfirmingTransaction(true)
+
       try {
         const signature = await walletAdapter.sendTransaction(
           transaction,
@@ -127,9 +99,12 @@ export const StakeOptionsDisplay = ({
         )
       } catch (error) {
         console.log(error)
+      } finally {
+        setIsConfirmingTransaction(false)
       }
 
-      await checkStakingStatus()
+      console.log("Transaction complete")
+      await fetchState()
     },
     [walletAdapter, connection]
   )
@@ -138,7 +113,8 @@ export const StakeOptionsDisplay = ({
     if (
       !walletAdapter.connected ||
       !walletAdapter.publicKey ||
-      !nftTokenAccount
+      !nftTokenAccount ||
+      !workspace.program
     ) {
       alert("Please connect your wallet")
       return
@@ -149,33 +125,20 @@ export const StakeOptionsDisplay = ({
       walletAdapter.publicKey
     )
 
-    const account = await connection.getAccountInfo(userStakeATA)
-
     const transaction = new Transaction()
 
-    if (!account) {
-      transaction.add(
-        createAssociatedTokenAccountInstruction(
-          walletAdapter.publicKey,
-          userStakeATA,
-          walletAdapter.publicKey,
-          STAKE_MINT
-        )
-      )
-    }
-
     transaction.add(
-      createUnstakeInstruction(
-        walletAdapter.publicKey,
-        nftTokenAccount,
-        nftData.address,
-        nftData.edition.address,
-        STAKE_MINT,
-        userStakeATA,
-        TOKEN_PROGRAM_ID,
-        METADATA_PROGRAM_ID,
-        PROGRAM_ID
-      )
+      await workspace.program.methods
+        .unstake()
+        .accounts({
+          nftTokenAccount: nftTokenAccount,
+          nftMint: nftData.mint.address,
+          nftEdition: nftData.edition.address,
+          metadataProgram: METADATA_PROGRAM_ID,
+          stakeMint: STAKE_MINT,
+          userStakeAta: userStakeATA,
+        })
+        .instruction()
     )
 
     await sendAndConfirmTransaction(transaction)
@@ -185,7 +148,8 @@ export const StakeOptionsDisplay = ({
     if (
       !walletAdapter.connected ||
       !walletAdapter.publicKey ||
-      !nftTokenAccount
+      !nftTokenAccount ||
+      !workspace.program
     ) {
       alert("Please connect your wallet")
       return
@@ -196,34 +160,25 @@ export const StakeOptionsDisplay = ({
       walletAdapter.publicKey
     )
 
-    const account = await connection.getAccountInfo(userStakeATA)
-
     const transaction = new Transaction()
 
-    if (!account) {
-      transaction.add(
-        createAssociatedTokenAccountInstruction(
-          walletAdapter.publicKey,
-          userStakeATA,
-          walletAdapter.publicKey,
-          STAKE_MINT
-        )
-      )
-    }
-
     transaction.add(
-      createRedeemInstruction(
-        walletAdapter.publicKey,
-        nftTokenAccount,
-        nftData.mint.address,
-        userStakeATA,
-        TOKEN_PROGRAM_ID,
-        PROGRAM_ID
-      )
+      await workspace.program.methods
+        .redeem()
+        .accounts({
+          nftTokenAccount: nftTokenAccount,
+          stakeMint: STAKE_MINT,
+          userStakeAta: userStakeATA,
+        })
+        .instruction()
     )
 
     await sendAndConfirmTransaction(transaction)
   }, [walletAdapter, connection, nftData, nftTokenAccount])
+
+  const daysStaked = useMemo(() => {
+    return stakeAccount?.daysStaked() ?? 0
+  }, [stakeAccount])
 
   return (
     <VStack
@@ -240,26 +195,39 @@ export const StakeOptionsDisplay = ({
         as="b"
         fontSize="sm"
       >
-        {isStaking
-          ? `STAKING ${daysStaked} DAY${daysStaked === 1 ? "" : "S"}`
+        {stakeAccount?.stakeState.staked
+          ? daysStaked < 1
+            ? "STAKED LESS THAN 1 DAY"
+            : `STAKED ${daysStaked} DAY${
+                Math.floor(daysStaked) === 1 ? "" : "S"
+              }`
           : "READY TO STAKE"}
       </Text>
       <VStack spacing={-1}>
         <Text color="white" as="b" fontSize="4xl">
-          {isStaking ? `${totalEarned} $BLD` : "0 $BLD"}
+          {`${Number(bldTokenAccount?.amount ?? 0) / Math.pow(10, 2)} $BLD`}
         </Text>
         <Text color="bodyText">
-          {isStaking ? `${claimable} $BLD earned` : "earn $BLD by staking"}
+          {stakeAccount?.stakeState.staked
+            ? `${stakeAccount?.claimable().toPrecision(2)} $BLD earned`
+            : "earn $BLD by staking"}
         </Text>
       </VStack>
       <Button
-        onClick={isStaking ? handleClaim : handleStake}
+        onClick={stakeAccount?.stakeState.staked ? handleClaim : handleStake}
         bgColor="buttonGreen"
         width="200px"
+        isLoading={isConfirmingTransaction}
       >
-        <Text as="b">{isStaking ? "claim $BLD" : "stake buildoor"}</Text>
+        <Text as="b">
+          {stakeAccount?.stakeState.staked ? "claim $BLD" : "stake buildoor"}
+        </Text>
       </Button>
-      {isStaking ? <Button onClick={handleUnstake}>unstake</Button> : null}
+      {stakeAccount?.stakeState.staked ? (
+        <Button onClick={handleUnstake} isLoading={isConfirmingTransaction}>
+          unstake
+        </Button>
+      ) : null}
     </VStack>
   )
 }

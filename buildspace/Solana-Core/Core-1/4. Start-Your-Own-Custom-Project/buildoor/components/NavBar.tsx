@@ -5,7 +5,6 @@ import styles from "../styles/Home.module.css"
 import dynamic from 'next/dynamic';
 
 const NavBar: FC = () => {
-
   const ButtonWrapper = dynamic(() =>
     import('@solana/wallet-adapter-react-ui').then((mod) => mod.WalletMultiButton)
   );
