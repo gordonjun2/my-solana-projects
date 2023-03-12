@@ -57,25 +57,7 @@ export const Form: FC = () => {
 
     let tokenAddress = await getAssociatedTokenAddress(mintPDA, publicKey)
 
-    const ataAccount = await connection.getAccountInfo(tokenAddress)
-
-    let transaction = new anchor.web3.Transaction()
-
-    if (!ataAccount) {
-
-        const ataInstruction = await createAssociatedTokenAccountInstruction(
-            publicKey,
-            tokenAddress,
-            publicKey,
-            mintPDA
-        )
-
-        transaction.add(ataInstruction)
-        await sendTransaction(transaction, connection)
-
-    }
-
-    transaction = new anchor.web3.Transaction()
+    const transaction = new anchor.web3.Transaction()
 
     if (toggle) {
       const instruction = await program.methods

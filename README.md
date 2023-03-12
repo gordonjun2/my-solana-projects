@@ -37,6 +37,7 @@ npm install chai
 
 - Solana Web3 (*@solana/web3.js*): https://solana-labs.github.io/solana-web3.js/
 - Solana Wallet Adapter (*@solana/wallet-adapter...*): https://solana-labs.github.io/wallet-adapter/
+- Solana Wallet Adapter WalletContextState (*@solana/wallet-adapter-react...*): https://solana-labs.github.io/wallet-adapter/interfaces/_solana_wallet_adapter_react.WalletContextState.html#sendTransaction
 - Solana SPL Token (*@solana/spl-token*): https://solana-labs.github.io/solana-program-library/token/js/
 - Metaplex Foundation (*@metaplex-foundation/js*): https://metaplex-foundation.github.io/js/modules/js.html
 - Solana CLI Documentation: https://docs.solana.com/cli
@@ -63,6 +64,7 @@ npm install chai
 
 ## Tips
 
+- [Convert PublicKey to String](https://solana.stackexchange.com/questions/3514/publickey-tostring-vs-publickey-tobase58)
 - [How to polyfill node core modules in webpack 5](https://alchemy.com/blog/how-to-polyfill-node-core-modules-in-webpack-5)
 - [export ‘Provider’ (imported as ‘Provider’) was not found in ‘@project-serum/anchor’](https://medium.com/illumination/export-provider-imported-as-provider-was-not-found-in-project-serum-anchor-b6f3dcc34601)
 - [How do I make Git forget about a file that was tracked, but is now in .gitignore?](https://stackoverflow.com/questions/1274057/how-do-i-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore)
